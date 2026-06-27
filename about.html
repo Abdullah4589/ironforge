@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About &amp; Facility — IRONFORGE</title>
+<meta name="description" content="Discover the philosophy and world-class equipment behind IRONFORGE Karachi. Squat racks, Eleiko plates, and recovery zones.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%230A0A0A'/><rect x='14' y='29' width='36' height='6' fill='%23E84C1E'/><rect x='9' y='22' width='8' height='20' rx='2' fill='%23E84C1E'/><rect x='47' y='22' width='8' height='20' rx='2' fill='%23E84C1E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="forge.css?v=2">
+<style>
+  /* Custom Page CSS */
+  .sub-hero {
+    padding: 160px 0 80px;
+    background: linear-gradient(180deg, rgba(232,76,30,0.02) 0%, transparent 100%);
+    text-align: center;
+  }
+  
+  /* Philosophy and Values styling */
+  .about-blocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+  .about-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 40px;
+    border-radius: 12px;
+    transition: border-color .3s ease;
+  }
+  .about-block:hover {
+    border-color: var(--accent);
+  }
+  .about-block h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .about-block p {
+    font-size: 14px;
+    color: var(--grey);
+  }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+  @media(max-width: 860px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media(max-width: 480px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .gallery-item {
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+    background: var(--card-2);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gallery-item:hover img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.06);
+  }
+  .gallery-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Specs list */
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  @media(max-width: 768px) {
+    .specs-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+  .spec-list {
+    list-style: none;
+  }
+  .spec-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  .spec-item .lbl {
+    font-weight: 600;
+    color: var(--white);
+  }
+  .spec-item .val {
+    color: var(--grey);
+  }
+
+  /* Map and Location */
+  .map-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+  }
+  @media(max-width: 768px) {
+    .map-card {
+      grid-template-columns: 1fr;
+    }
+  }
+  .map-placeholder {
+    background: #0f0f0f;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    aspect-ratio: 16/10;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: 0.4;
+  }
+  .map-pin {
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 10px rgba(232, 76, 30, 0.2);
+    animation: pulseGlow 2s infinite;
+  }
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0px rgba(232, 76, 30, 0.4); }
+    100% { box-shadow: 0 0 0 16px rgba(232, 76, 30, 0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo">
+    <span class="iron"></span><span class="forge"></span>
+  </div>
+</div>
+
+<!-- ===================== CURSOR SPOTLIGHT ===================== -->
+<div id="spotlight"></div>
+
+<!-- ===================== NAV ===================== -->
+<nav id="nav">
+  <a href="ironforge.html" class="brand">IRON<span class="fg">FORGE</span></a>
+  <div class="nav-links">
+    <a href="classes.html" class="nlink">Classes</a>
+    <a href="trainers.html" class="nlink">Trainers</a>
+    <a href="pricing.html" class="nlink">Pricing</a>
+    <a href="about.html" class="nlink">About</a>
+    <a href="pricing.html#signup" class="btn btn-primary">Join now</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===================== MOBILE MENU ===================== -->
+<div id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <a href="classes.html">Classes</a>
+  <a href="trainers.html">Trainers</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="pricing.html#signup" class="m-join">Join now</a>
+</div>
+
+<div class="page">
+
+  <!-- ===================== SUB-HERO ===================== -->
+  <section class="sub-hero">
+    <div class="wrap">
+      <div class="eyebrow">Our Foundation</div>
+      <h1 class="sec-title" style="font-size: clamp(48px, 8vw, 84px); margin-top: 10px;">The Facility</h1>
+      <p class="sec-desc" style="margin: 20px auto 0;">Built to support serious performance. From raw barbell zones to scientific conditioning tools, everything in the Forge is curated with purpose.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PHILOSOPHY BLOCKS ===================== -->
+  <section style="padding-top: 0;">
+    <div class="wrap">
+      <div class="about-blocks">
+        <div class="about-block reveal" style="--d:0ms">
+          <h3>Uncompromised Standards</h3>
+          <p>We do not make concessions for trend-chasing gym fads. We provide top-tier equipment, science-backed methodology, and an atmosphere designed to push human performance limit-by-limit.</p>
+        </div>
+        <div class="about-block reveal" style="--d:100ms">
+          <h3>Science Meets Grit</h3>
+          <p>Raw strength is built on mechanical laws. Our programs are designed using structured periodization schemes combined with the raw physical effort required to force true muscular adaptation.</p>
+        </div>
+        <div class="about-block reveal" style="--d:200ms">
+          <h3>No Gimmicks</h3>
+          <p>No filters. No soft lighting. We are a strength house built for individuals who understand that progress is earned through sweat, patience, and consistent technical refinement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY SECTION ===================== -->
+  <section style="background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom: 48px;">
+        <div class="eyebrow">Inside the Gym</div>
+        <h2 class="sec-title">Facility Gallery</h2>
+        <p class="sec-desc">A visual walk-through of the main training grounds. Structured, clean, and built for work.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80" alt="Main Barbell Zone">
+          <span class="gallery-label">Main Lifting Zone</span>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80" alt="HIIT & Combat Ring">
+          <span class="gallery-label">Combat HIIT Room</span>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Squat Racks">
+          <span class="gallery-label">Squat Platforms</span>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=600&q=80" alt="CNS Recovery Zone">
+          <span class="gallery-label">Recovery Zone</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EQUIPMENT SPECS ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="specs-grid">
+        <div>
+          <div class="eyebrow">No Compromise Equipment</div>
+          <h2 class="sec-title" style="margin: 10px 0 18px;">Hardware Specs</h2>
+          <p class="sec-desc" style="margin: 0; max-width: none;">We believe that training quality is bounded by your tools. Every barbell, plate, rack, and machine in IRONFORGE is sourced from internationally verified manufacturers.</p>
+        </div>
+        <div>
+          <ul class="spec-list">
+            <li class="spec-item">
+              <span class="lbl">Squat Platforms</span>
+              <span class="val">10 Rogue Monster Racks</span>
+            </li>
+            <li class="spec-item">
+              <span class="lbl">Barbells &amp; Plates</span>
+              <span class="val">Eleiko Competition &amp; Rogue Ohio Bar</span>
+            </li>
+            <li class="spec-item">
+              <span class="lbl">Metabolic Tools</span>
+              <span class="val">Concept2 SkiErgs &amp; Rowers</span>
+            </li>
+            <li class="spec-item">
+              <span class="lbl">Dumbbells</span>
+              <span class="val">Urethane Solids up to 70kg</span>
+            </li>
+            <li class="spec-item">
+              <span class="lbl">CNS Recovery</span>
+              <span class="val">Sauna &amp; 3°C Custom Cold Plunge</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOCATION & DETAILS ===================== -->
+  <section style="background: var(--bg-2); border-top: 1px solid var(--border); padding-bottom: 120px;">
+    <div class="wrap">
+      <div class="map-card">
+        <div class="map-placeholder">
+          <div class="map-dots"></div>
+          <div class="map-pin"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <span class="eyebrow">Find the Forge</span>
+          <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 900; text-transform: uppercase; margin: 10px 0 12px; line-height: 1;">DHA Karachi HQ</h3>
+          <p style="font-size: 15px; color: var(--grey); line-height: 1.6; margin-bottom: 24px;">Located on Khayaban-e-Ittehad, Phase VI, DHA, Karachi. Positioned centrally with wide access routes. Free on-site, guarded parking is available for all members.</p>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-primary" style="align-self: flex-start;">Open Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="ironforge.html" class="brand">IRON<span class="fg">FORGE</span></a>
+        <p class="footer-blurb">Karachi's premier strength &amp; performance training facility. Train hard. Break limits.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7C3.96 8.94 3.96 9.3 3.96 12s0 3.06.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.07 1.59.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.07-1.24.07-1.59.07-4.74s0-3.06-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 00-.68-1.06 2.85 2.85 0 00-1.06-.68c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1112 17a4.94 4.94 0 010-9.88zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm6.28-.36a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>Khayaban-e-Ittehad<br>DHA Phase VI, Karachi</p>
+        <p>Open daily · 6 AM – 11 PM</p>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="tel:+922135001234">+92 21 3500 1234</a>
+        <a href="mailto:hello@ironforge.pk">hello@ironforge.pk</a>
+        <a href="pricing.html#signup">Claim free trial</a>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <div class="copy">© 2026 IRONFORGE Training Co. · Karachi, Pakistan. All rights reserved.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="forge.js?v=2" defer></script>
+</body>
+</html>

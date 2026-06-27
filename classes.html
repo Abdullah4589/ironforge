@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes &amp; Programs — IRONFORGE</title>
+<meta name="description" content="Explore our training programs at IRONFORGE Karachi. From Powerlifting to Combat HIIT, pick your discipline.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%230A0A0A'/><rect x='14' y='29' width='36' height='6' fill='%23E84C1E'/><rect x='9' y='22' width='8' height='20' rx='2' fill='%23E84C1E'/><rect x='47' y='22' width='8' height='20' rx='2' fill='%23E84C1E'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="forge.css?v=2">
+<style>
+  /* Custom Page CSS */
+  .sub-hero {
+    padding: 160px 0 80px;
+    background: linear-gradient(180deg, rgba(232,76,30,0.02) 0%, transparent 100%);
+    text-align: center;
+  }
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--grey);
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    box-shadow: 0 4px 15px rgba(232, 76, 30, 0.2);
+  }
+  
+  /* Timetable styling */
+  .schedule-section {
+    padding: 60px 0 120px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+  }
+  .schedule-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  }
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    text-align: left;
+  }
+  .schedule-table th, .schedule-table td {
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+  .schedule-table th {
+    background: rgba(255,255,255,0.02);
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .schedule-table td {
+    font-size: 14px;
+    color: var(--grey);
+    vertical-align: top;
+    height: 120px;
+    transition: background 0.3s ease;
+  }
+  .schedule-table td:hover {
+    background: rgba(255, 255, 255, 0.01);
+  }
+  .time-slot {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  .class-tag {
+    font-size: 11px;
+    background: rgba(232,76,30,0.1);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo">
+    <span class="iron"></span><span class="forge"></span>
+  </div>
+</div>
+
+<!-- ===================== CURSOR SPOTLIGHT ===================== -->
+<div id="spotlight"></div>
+
+<!-- ===================== NAV ===================== -->
+<nav id="nav">
+  <a href="ironforge.html" class="brand">IRON<span class="fg">FORGE</span></a>
+  <div class="nav-links">
+    <a href="classes.html" class="nlink">Classes</a>
+    <a href="trainers.html" class="nlink">Trainers</a>
+    <a href="pricing.html" class="nlink">Pricing</a>
+    <a href="about.html" class="nlink">About</a>
+    <a href="pricing.html#signup" class="btn btn-primary">Join now</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===================== MOBILE MENU ===================== -->
+<div id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <a href="classes.html">Classes</a>
+  <a href="trainers.html">Trainers</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="pricing.html#signup" class="m-join">Join now</a>
+</div>
+
+<div class="page">
+
+  <!-- ===================== SUB-HERO ===================== -->
+  <section class="sub-hero">
+    <div class="wrap">
+      <div class="eyebrow">Build Your Discipline</div>
+      <h1 class="sec-title" style="font-size: clamp(48px, 8vw, 84px); margin-top: 10px;">Our Classes</h1>
+      <p class="sec-desc" style="margin: 20px auto 0;">From technical strength to explosive endurance conditioning. Choose your battlefield and train under specialist coaches.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRAMS GRID ===================== -->
+  <section id="programs" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Disciplines</button>
+        <button class="filter-btn" data-filter="strength">Strength</button>
+        <button class="filter-btn" data-filter="cardio">Cardio &amp; HIIT</button>
+        <button class="filter-btn" data-filter="recovery">Recovery</button>
+      </div>
+
+      <div class="class-grid" id="classGrid">
+        <div class="class-card reveal tilt" data-category="strength" style="--d:0ms">
+          <div class="class-card-top">
+            <span class="idx">01</span>
+            <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="3" height="12" rx="1"/><rect x="19" y="6" width="3" height="12" rx="1"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="2" y1="12" x2="0" y2="12"/><line x1="22" y1="12" x2="24" y2="12"/></svg>
+          </div>
+          <h3>Powerlifting</h3>
+          <p>Master the squat, bench press, and deadlift. Focus on absolute strength, mechanical efficiency, and peaking cycles.</p>
+          <div class="meta">Strength · All levels</div>
+        </div>
+
+        <div class="class-card reveal tilt" data-category="cardio" style="--d:80ms">
+          <div class="class-card-top">
+            <span class="idx">02</span>
+            <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Combat HIIT</h3>
+          <p>Heavy bag drills and pad work fused with explosive kettlebell intervals and cardio conditioning. Build work capacity.</p>
+          <div class="meta">Cardio · Intermediate</div>
+        </div>
+
+        <div class="class-card reveal tilt" data-category="strength" style="--d:160ms">
+          <div class="class-card-top">
+            <span class="idx">03</span>
+            <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><line x1="12" y1="2" x2="12" y2="4"/></svg>
+          </div>
+          <h3>Athletic Performance</h3>
+          <p>Designed for competing athletes. Speed training, multidirectional agility, vertical power, and injury mitigation.</p>
+          <div class="meta">Performance · Advanced</div>
+        </div>
+
+        <div class="class-card reveal tilt" data-category="cardio" style="--d:240ms">
+          <div class="class-card-top">
+            <span class="idx">04</span>
+            <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          </div>
+          <h3>Metabolic Forge</h3>
+          <p>Sled pushes, rowing intervals, wall balls, and structural carries. Designed to maximize post-exercise caloric burn.</p>
+          <div class="meta">Conditioning · Advanced</div>
+        </div>
+
+        <div class="class-card reveal tilt" data-category="recovery" style="--d:320ms">
+          <div class="class-card-top">
+            <span class="idx">05</span>
+            <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Mobility &amp; Recovery</h3>
+          <p>Improve joint articulation, active flexibility, and nervous system regulation. The perfect antidote to heavy training.</p>
+          <div class="meta">Recovery · All levels</div>
+        </div>
+
+        <div class="class-card reveal tilt" data-category="strength" style="--d:400ms">
+          <div class="class-card-top">
+            <span class="idx">06</span>
+            <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>1-on-1 Coaching</h3>
+          <p>Dedicated personal training. Completely customized programming, technique correction, nutrition guidance, and accountability.</p>
+          <div class="meta">Personal · Custom</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TIMETABLE SECTION ===================== -->
+  <section class="schedule-section">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom: 48px;">
+        <div class="eyebrow">Weekly Grid</div>
+        <h2 class="sec-title">Class Schedule</h2>
+        <p class="sec-desc">Plan your training week. Classes start on time. Please arrive 10 minutes prior for setup.</p>
+      </div>
+
+      <div class="schedule-container">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Mon / Wed / Fri</th>
+              <th>Tue / Thu</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-slot" style="height: auto; vertical-align: middle;">06:30 AM</td>
+              <td>
+                <span class="time-slot">Combat HIIT</span>
+                <span class="class-tag">Cardio</span>
+              </td>
+              <td>
+                <span class="time-slot">Metabolic Forge</span>
+                <span class="class-tag">Cardio</span>
+              </td>
+              <td>
+                <span class="time-slot">Powerlifting Peak</span>
+                <span class="class-tag">Strength</span>
+              </td>
+              <td>
+                <span class="time-slot">Open Gym</span>
+                <span class="class-tag" style="background: rgba(255,255,255,0.05); color: var(--grey);">Free Training</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-slot" style="height: auto; vertical-align: middle;">09:00 AM</td>
+              <td>
+                <span class="time-slot">Powerlifting Squad</span>
+                <span class="class-tag">Strength</span>
+              </td>
+              <td>
+                <span class="time-slot">Athletic Performance</span>
+                <span class="class-tag">Strength</span>
+              </td>
+              <td>
+                <span class="time-slot">Metabolic Forge</span>
+                <span class="class-tag">Cardio</span>
+              </td>
+              <td>
+                <span class="time-slot">Mobility &amp; Reset</span>
+                <span class="class-tag" style="background: #e84c1e1c; color: var(--accent);">Recovery</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-slot" style="height: auto; vertical-align: middle;">05:30 PM</td>
+              <td>
+                <span class="time-slot">Combat HIIT</span>
+                <span class="class-tag">Cardio</span>
+              </td>
+              <td>
+                <span class="time-slot">Powerlifting Basics</span>
+                <span class="class-tag">Strength</span>
+              </td>
+              <td>
+                <span class="time-slot">Athletic Agility</span>
+                <span class="class-tag">Strength</span>
+              </td>
+              <td>
+                <span class="time-slot">Closed</span>
+                <span class="class-tag" style="background: rgba(255,255,255,0.05); color: var(--grey-2);">Rest Day</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-slot" style="height: auto; vertical-align: middle;">07:00 PM</td>
+              <td>
+                <span class="time-slot">Metabolic Forge</span>
+                <span class="class-tag">Cardio</span>
+              </td>
+              <td>
+                <span class="time-slot">Athletic Performance</span>
+                <span class="class-tag">Strength</span>
+              </td>
+              <td>
+                <span class="time-slot">Mobility Flow</span>
+                <span class="class-tag" style="background: #e84c1e1c; color: var(--accent);">Recovery</span>
+              </td>
+              <td>
+                <span class="time-slot">Closed</span>
+                <span class="class-tag" style="background: rgba(255,255,255,0.05); color: var(--grey-2);">Rest Day</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="ironforge.html" class="brand">IRON<span class="fg">FORGE</span></a>
+        <p class="footer-blurb">Karachi's premier strength &amp; performance training facility. Train hard. Break limits.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7C3.96 8.94 3.96 9.3 3.96 12s0 3.06.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.07 1.59.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.07-1.24.07-1.59.07-4.74s0-3.06-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 00-.68-1.06 2.85 2.85 0 00-1.06-.68c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1112 17a4.94 4.94 0 010-9.88zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm6.28-.36a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>Khayaban-e-Ittehad<br>DHA Phase VI, Karachi</p>
+        <p>Open daily · 6 AM – 11 PM</p>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="tel:+922135001234">+92 21 3500 1234</a>
+        <a href="mailto:hello@ironforge.pk">hello@ironforge.pk</a>
+        <a href="pricing.html#signup">Claim free trial</a>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <div class="copy">© 2026 IRONFORGE Training Co. · Karachi, Pakistan. All rights reserved.</div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="forge.js?v=2" defer></script>
+<script>
+  // Simple category filter logic
+  document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('#classGrid .class-card');
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        buttons.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var filter = btn.getAttribute('data-filter');
+
+        cards.forEach(function(card) {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+            setTimeout(function() {
+              card.style.opacity = '1';
+              card.style.transform = 'none';
+            }, 50);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

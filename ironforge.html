@@ -29,7 +29,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="forge.css">
+<link rel="stylesheet" href="forge.css?v=2">
 </head>
 <body>
 
@@ -45,14 +45,13 @@
 
 <!-- ===================== NAV ===================== -->
 <nav id="nav">
-  <a href="#hero" class="brand">IRON<span class="fg">FORGE</span></a>
+  <a href="ironforge.html" class="brand">IRON<span class="fg">FORGE</span></a>
   <div class="nav-links">
-    <a href="#classes" class="nlink">Classes</a>
-    <a href="#trainers" class="nlink">Trainers</a>
-    <a href="#pricing" class="nlink">Pricing</a>
-    <a href="#testimonials" class="nlink">Results</a>
-    <a href="#faq" class="nlink">FAQ</a>
-    <a href="#contact" class="btn btn-primary">Join now</a>
+    <a href="classes.html" class="nlink">Classes</a>
+    <a href="trainers.html" class="nlink">Trainers</a>
+    <a href="pricing.html" class="nlink">Pricing</a>
+    <a href="about.html" class="nlink">About</a>
+    <a href="pricing.html#signup" class="btn btn-primary">Join now</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
@@ -61,12 +60,11 @@
 
 <!-- ===================== MOBILE MENU ===================== -->
 <div id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site menu">
-  <a href="#classes">Classes</a>
-  <a href="#trainers">Trainers</a>
-  <a href="#pricing">Pricing</a>
-  <a href="#testimonials">Results</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact" class="m-join">Join now</a>
+  <a href="classes.html">Classes</a>
+  <a href="trainers.html">Trainers</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="pricing.html#signup" class="m-join">Join now</a>
 </div>
 
 <div class="page">
@@ -89,8 +87,8 @@
       </h1>
       <p class="hero-sub">No gimmicks, no shortcuts. Serious coaching, brutal programming, and a room full of people chasing the same standard you are.</p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Start your trial</a>
-        <a href="#classes" class="ghost-link"><span class="arr">▶</span> See our programs</a>
+        <a href="pricing.html#signup" class="btn btn-primary">Start your trial</a>
+        <a href="classes.html" class="ghost-link"><span class="arr">▶</span> See our programs</a>
       </div>
       <div class="stats" id="stats">
         <div class="stat"><div class="num" data-count="2400" data-suffix="+">0</div><div class="lbl">Members</div></div>
@@ -117,37 +115,55 @@
     </div>
     <div class="class-grid">
       <div class="class-card reveal tilt" style="--d:0ms">
-        <span class="idx">01</span>
+        <div class="class-card-top">
+          <span class="idx">01</span>
+          <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="3" height="12" rx="1"/><rect x="19" y="6" width="3" height="12" rx="1"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="2" y1="12" x2="0" y2="12"/><line x1="22" y1="12" x2="24" y2="12"/></svg>
+        </div>
         <h3>Powerlifting</h3>
         <p>Squat, bench, deadlift. Pure strength methodology.</p>
         <div class="meta">Strength · All levels</div>
       </div>
       <div class="class-card reveal tilt" style="--d:80ms">
-        <span class="idx">02</span>
+        <div class="class-card-top">
+          <span class="idx">02</span>
+          <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
         <h3>Combat HIIT</h3>
         <p>Boxing drills fused with high-intensity intervals.</p>
         <div class="meta">Cardio · Intermediate</div>
       </div>
       <div class="class-card reveal tilt" style="--d:160ms">
-        <span class="idx">03</span>
+        <div class="class-card-top">
+          <span class="idx">03</span>
+          <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><line x1="12" y1="2" x2="12" y2="4"/></svg>
+        </div>
         <h3>Athletic Performance</h3>
         <p>Speed, agility, explosiveness for competing athletes.</p>
         <div class="meta">Performance · Advanced</div>
       </div>
       <div class="class-card reveal tilt" style="--d:240ms">
-        <span class="idx">04</span>
+        <div class="class-card-top">
+          <span class="idx">04</span>
+          <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        </div>
         <h3>Metabolic Forge</h3>
         <p>Full-body circuits, maximum work, minimum rest.</p>
         <div class="meta">Conditioning · Advanced</div>
       </div>
       <div class="class-card reveal tilt" style="--d:320ms">
-        <span class="idx">05</span>
+        <div class="class-card-top">
+          <span class="idx">05</span>
+          <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
         <h3>Mobility &amp; Recovery</h3>
         <p>Joint health, flexibility, CNS reset.</p>
         <div class="meta">Recovery · All levels</div>
       </div>
       <div class="class-card reveal tilt" style="--d:400ms">
-        <span class="idx">06</span>
+        <div class="class-card-top">
+          <span class="idx">06</span>
+          <svg class="class-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <h3>1-on-1 Coaching</h3>
         <p>Custom programming, real-time feedback.</p>
         <div class="meta">Personal · Custom</div>
@@ -218,11 +234,11 @@
         <div class="tier">Grind</div>
         <div class="price"><sup>Rs</sup>4,500<span class="per">/mo</span></div>
         <ul class="feat">
-          <li><span class="dot"></span>Gym access</li>
-          <li><span class="dot"></span>Locker</li>
-          <li><span class="dot"></span>2 classes / week</li>
-          <li class="no"><span class="dot"></span>Personal training</li>
-          <li class="no"><span class="dot"></span>Nutrition consult</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gym access</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Locker</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 classes / week</li>
+          <li class="no"><svg class="cross-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Personal training</li>
+          <li class="no"><svg class="cross-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Nutrition consult</li>
         </ul>
         <a href="#contact" class="btn btn-ghost plan-btn">Choose Grind</a>
       </div>
@@ -231,11 +247,11 @@
         <div class="tier">Forge</div>
         <div class="price"><sup>Rs</sup>8,500<span class="per">/mo</span></div>
         <ul class="feat">
-          <li><span class="dot"></span>Gym access</li>
-          <li><span class="dot"></span>Locker</li>
-          <li><span class="dot"></span>Unlimited classes</li>
-          <li><span class="dot"></span>2 PT sessions / mo</li>
-          <li class="no"><span class="dot"></span>Nutrition consult</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gym access</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Locker</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited classes</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 PT sessions / mo</li>
+          <li class="no"><svg class="cross-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Nutrition consult</li>
         </ul>
         <a href="#contact" class="btn btn-primary plan-btn">Choose Forge</a>
       </div>
@@ -243,11 +259,11 @@
         <div class="tier">Elite</div>
         <div class="price"><sup>Rs</sup>15,000<span class="per">/mo</span></div>
         <ul class="feat">
-          <li><span class="dot"></span>Gym access</li>
-          <li><span class="dot"></span>Locker</li>
-          <li><span class="dot"></span>Unlimited classes</li>
-          <li><span class="dot"></span>8 PT sessions / mo</li>
-          <li><span class="dot"></span>Nutrition consult</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gym access</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Locker</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited classes</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>8 PT sessions / mo</li>
+          <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Nutrition consult</li>
         </ul>
         <a href="#contact" class="btn btn-ghost plan-btn">Choose Elite</a>
       </div>
@@ -270,7 +286,13 @@
     </div>
     <div class="test-grid">
       <div class="test-card reveal-left tilt" style="--d:0ms">
-        <div class="stars">★★★★★</div>
+        <div class="stars">
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
         <p class="quote"><span class="qmark">“</span><span>Hit a 140kg deadlift in 4 months with Kamran. The programming is no-nonsense and it just works.</span></p>
         <div class="author">
           <div class="ava">FA</div>
@@ -278,7 +300,13 @@
         </div>
       </div>
       <div class="test-card reveal-left tilt" style="--d:100ms">
-        <div class="stars">★★★★★</div>
+        <div class="stars">
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
         <p class="quote"><span class="qmark">“</span><span>First time training seriously and I'm hooked. Combat HIIT with Sara is the highlight of my week.</span></p>
         <div class="author">
           <div class="ava">HS</div>
@@ -286,7 +314,13 @@
         </div>
       </div>
       <div class="test-card reveal-left tilt" style="--d:200ms">
-        <div class="stars">★★★★★</div>
+        <div class="stars">
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
         <p class="quote"><span class="qmark">“</span><span>Came back after a knee injury terrified of lifting again. Zain's mobility sessions were the key to everything.</span></p>
         <div class="author">
           <div class="ava">OM</div>
@@ -383,7 +417,7 @@
       <h4>Get in touch</h4>
       <a href="tel:+922135001234">+92 21 3500 1234</a>
       <a href="mailto:hello@ironforge.pk">hello@ironforge.pk</a>
-      <a href="#contact">Claim free trial</a>
+      <a href="pricing.html#signup">Claim free trial</a>
     </div>
   </div>
   <div class="footer-inner">
@@ -394,6 +428,6 @@
 </div><!-- /.page -->
 
 <!-- Behavior -->
-<script src="forge.js" defer></script>
+<script src="forge.js?v=2" defer></script>
 </body>
 </html>

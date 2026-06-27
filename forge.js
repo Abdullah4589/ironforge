@@ -10,6 +10,7 @@
   (function buildLoader(){
     var ironWrap = document.querySelector('.loader-logo .iron');
     var forgeWrap = document.querySelector('.loader-logo .forge');
+    if (!ironWrap || !forgeWrap) return;
     var iron = 'IRON'.split('');
     var forge = 'FORGE'.split('');
     var delay = 0;
@@ -77,7 +78,7 @@
 
   /* ---------- Cursor spotlight ---------- */
   var spot = document.getElementById('spotlight');
-  if(!noHover){
+  if(spot && !noHover){
     document.addEventListener('mousemove', function(e){
       spot.style.setProperty('--x', e.clientX + 'px');
       spot.style.setProperty('--y', e.clientY + 'px');
@@ -87,11 +88,14 @@
   /* ---------- Nav scroll state ---------- */
   var nav = document.getElementById('nav');
   function onScroll(){
+    if (!nav) return;
     if(window.scrollY > 80) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  if (nav) {
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
 
   /* ---------- Magnetic tilt ---------- */
   function setupTilt(){
@@ -114,42 +118,47 @@
   /* ---------- Mobile menu ---------- */
   var navToggle = document.getElementById('navToggle');
   var mobileMenu = document.getElementById('mobileMenu');
-  function closeMenu(){
-    navToggle.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+  if (navToggle && mobileMenu) {
+    var closeMenu = function(){
+      navToggle.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    navToggle.addEventListener('click', function(){
+      var open = mobileMenu.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeMenu();
+    });
   }
-  navToggle.addEventListener('click', function(){
-    var open = mobileMenu.classList.toggle('open');
-    navToggle.classList.toggle('open', open);
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mobileMenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', closeMenu);
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeMenu();
-  });
 
-  /* ---------- Scroll-spy: highlight active nav link ---------- */
-  var navMap = {};
-  document.querySelectorAll('.nav-links a.nlink').forEach(function(a){
-    navMap[a.getAttribute('href').slice(1)] = a;
-  });
-  var spy = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        Object.keys(navMap).forEach(function(k){ navMap[k].classList.remove('active'); });
-        if(navMap[e.target.id]) navMap[e.target.id].classList.add('active');
+  /* ---------- Nav Active Page Highlight ---------- */
+  (function highlightNav(){
+    var path = window.location.pathname;
+    var page = path.split('/').pop() || 'ironforge.html';
+    
+    // Fallback for directory indexing
+    if(page === '' || page === '/') page = 'ironforge.html';
+    
+    document.querySelectorAll('.nav-links a, #mobileMenu a').forEach(function(a){
+      var href = a.getAttribute('href');
+      if (href) {
+        var cleanHref = href.split('#')[0];
+        if (cleanHref === page) {
+          a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
       }
     });
-  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
-  ['classes','trainers','pricing','testimonials','faq'].forEach(function(id){
-    var sec = document.getElementById(id);
-    if(sec) spy.observe(sec);
-  });
+  })();
 
   /* ---------- FAQ accordion ---------- */
   document.querySelectorAll('.faq-q').forEach(function(btn){
@@ -165,54 +174,56 @@
   /* ---------- Contact form (validation + real submit) ---------- */
   var form = document.getElementById('trialForm');
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var email = document.getElementById('trialEmail');
-    var btn = document.getElementById('trialBtn');
-    var note = document.getElementById('formNote');
-    var val = email.value.trim();
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('trialEmail');
+      var btn = document.getElementById('trialBtn');
+      var note = document.getElementById('formNote');
+      var val = email.value.trim();
 
-    note.classList.remove('error', 'done');
-    email.classList.remove('invalid');
+      note.classList.remove('error', 'done');
+      email.classList.remove('invalid');
 
-    if(!EMAIL_RE.test(val)){
-      email.classList.add('invalid');
-      note.textContent = 'Please enter a valid email address.';
-      note.classList.add('error');
-      email.focus();
-      return;
-    }
+      if(!EMAIL_RE.test(val)){
+        email.classList.add('invalid');
+        note.textContent = 'Please enter a valid email address.';
+        note.classList.add('error');
+        email.focus();
+        return;
+      }
 
-    var action = form.getAttribute('action') || '';
-    var configured = action && action.indexOf('your-form-id') === -1;
+      var action = form.getAttribute('action') || '';
+      var configured = action && action.indexOf('your-form-id') === -1;
 
-    email.disabled = true;
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
+      email.disabled = true;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
 
-    function success(){
-      btn.textContent = 'Done!';
-      note.textContent = "You're in — check your inbox, we'll be in touch within 24 hours.";
-      note.classList.add('done');
-    }
-    function failure(){
-      email.disabled = false;
-      btn.disabled = false;
-      btn.textContent = 'Claim your trial';
-      note.textContent = 'Something went wrong — please try again or email hello@ironforge.pk.';
-      note.classList.add('error');
-    }
+      function success(){
+        btn.textContent = 'Done!';
+        note.textContent = "You're in — check your inbox, we'll be in touch within 24 hours.";
+        note.classList.add('done');
+      }
+      function failure(){
+        email.disabled = false;
+        btn.disabled = false;
+        btn.textContent = 'Claim your trial';
+        note.textContent = 'Something went wrong — please try again or email hello@ironforge.pk.';
+        note.classList.add('error');
+      }
 
-    // Endpoint not wired up yet → demo mode (simulate success).
-    if(!configured){ setTimeout(success, 600); return; }
+      // Endpoint not wired up yet → demo mode (simulate success).
+      if(!configured){ setTimeout(success, 600); return; }
 
-    fetch(action, {
-      method: 'POST',
-      headers: {'Accept': 'application/json'},
-      body: new FormData(form)
-    }).then(function(r){ r.ok ? success() : failure(); })
-      .catch(failure);
-  });
+      fetch(action, {
+        method: 'POST',
+        headers: {'Accept': 'application/json'},
+        body: new FormData(form)
+      }).then(function(r){ r.ok ? success() : failure(); })
+        .catch(failure);
+    });
+  }
 
   /* ---------- Boot ---------- */
   setupTilt();
@@ -228,19 +239,24 @@
   // Run the loader, then reveal page + fire hero sequence
   window.addEventListener('load', function(){
     var loader = document.getElementById('loader');
+    if (!loader) {
+      document.body.classList.add('loaded', 'hero-in');
+      return;
+    }
     setTimeout(function(){
       loader.classList.add('gone');
       document.body.classList.add('loaded');
       // fire hero entrance once page is visible
-      setTimeout(function(){ document.body.classList.add('hero-in'); }, 200);
-    }, 2200);
+      setTimeout(function(){ document.body.classList.add('hero-in'); }, 100);
+    }, 850);
   });
   // Fallback if 'load' already fired or is slow
   setTimeout(function(){
     if(!document.body.classList.contains('loaded')){
-      document.getElementById('loader').classList.add('gone');
+      var loader = document.getElementById('loader');
+      if (loader) loader.classList.add('gone');
       document.body.classList.add('loaded');
-      setTimeout(function(){ document.body.classList.add('hero-in'); }, 200);
+      setTimeout(function(){ document.body.classList.add('hero-in'); }, 100);
     }
-  }, 3200);
+  }, 1600);
 })();
