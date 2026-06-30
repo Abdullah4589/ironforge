@@ -11,16 +11,14 @@
     var ironWrap = document.querySelector('.loader-logo .iron');
     var forgeWrap = document.querySelector('.loader-logo .forge');
     if (!ironWrap || !forgeWrap) return;
-    var iron = 'IRON'.split('');
-    var forge = 'FORGE'.split('');
     var delay = 0;
-    iron.forEach(function(ch){
+    'IRON'.split('').forEach(function(ch){
       var s = document.createElement('span');
       s.className = 'ltr'; s.textContent = ch;
       s.style.setProperty('--ld', delay + 'ms');
       ironWrap.appendChild(s); delay += 80;
     });
-    forge.forEach(function(ch){
+    'FORGE'.split('').forEach(function(ch){
       var s = document.createElement('span');
       s.className = 'ltr'; s.textContent = ch;
       s.style.setProperty('--ld', delay + 'ms');
@@ -34,7 +32,7 @@
     var start = performance.now();
     function step(now){
       var progress = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
       if(progress < 1) requestAnimationFrame(step);
       else el.textContent = target.toLocaleString() + suffix;
@@ -88,11 +86,10 @@
   /* ---------- Nav scroll state ---------- */
   var nav = document.getElementById('nav');
   function onScroll(){
-    if (!nav) return;
-    if(window.scrollY > 80) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
+    if(!nav) return;
+    nav.classList.toggle('scrolled', window.scrollY > 80);
   }
-  if (nav) {
+  if(nav){
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
   }
@@ -101,16 +98,19 @@
   function setupTilt(){
     if(noHover || reduced) return;
     document.querySelectorAll('.tilt').forEach(function(card){
+      var isFeatured = card.classList.contains('featured');
       card.addEventListener('mousemove', function(e){
         var rect = card.getBoundingClientRect();
         var x = (e.clientX - rect.left) / rect.width - 0.5;
         var y = (e.clientY - rect.top) / rect.height - 0.5;
+        var sc = isFeatured ? ' scale(1.03)' : '';
         card.style.transition = 'transform .1s ease';
-        card.style.transform = 'perspective(600px) rotateY(' + (x*12) + 'deg) rotateX(' + (-y*12) + 'deg) translateZ(8px)';
+        card.style.transform = 'perspective(600px) rotateY(' + (x*12) + 'deg) rotateX(' + (-y*12) + 'deg) translateZ(8px)' + sc;
       });
       card.addEventListener('mouseleave', function(){
+        var sc = isFeatured ? ' scale(1.03)' : '';
         card.style.transition = 'transform .5s cubic-bezier(0.16,1,0.3,1)';
-        card.style.transform = 'perspective(600px) rotateY(0) rotateX(0) translateZ(0)';
+        card.style.transform = 'perspective(600px) rotateY(0) rotateX(0) translateZ(0)' + sc;
       });
     });
   }
@@ -118,7 +118,7 @@
   /* ---------- Mobile menu ---------- */
   var navToggle = document.getElementById('navToggle');
   var mobileMenu = document.getElementById('mobileMenu');
-  if (navToggle && mobileMenu) {
+  if(navToggle && mobileMenu){
     var closeMenu = function(){
       navToggle.classList.remove('open');
       mobileMenu.classList.remove('open');
@@ -139,24 +139,34 @@
     });
   }
 
-  /* ---------- Nav Active Page Highlight ---------- */
+  /* ---------- Nav active page highlight ---------- */
   (function highlightNav(){
     var path = window.location.pathname;
     var page = path.split('/').pop() || 'ironforge.html';
-    
-    // Fallback for directory indexing
     if(page === '' || page === '/') page = 'ironforge.html';
-    
     document.querySelectorAll('.nav-links a, #mobileMenu a').forEach(function(a){
       var href = a.getAttribute('href');
-      if (href) {
+      if(href){
         var cleanHref = href.split('#')[0];
-        if (cleanHref === page) {
-          a.classList.add('active');
-        } else {
-          a.classList.remove('active');
-        }
+        if(cleanHref === page) a.classList.add('active');
+        else a.classList.remove('active');
       }
+    });
+  })();
+
+  /* ---------- Plan selection → pre-fill contact form ---------- */
+  (function(){
+    var hiddenPlan = document.getElementById('trialPlan');
+    var contactSub = document.querySelector('.contact-sub');
+    var defaultSub = contactSub ? contactSub.textContent : '';
+    document.querySelectorAll('[data-plan]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var plan = btn.getAttribute('data-plan');
+        if(hiddenPlan) hiddenPlan.value = plan;
+        if(contactSub && plan){
+          contactSub.textContent = 'You selected the ' + plan + ' plan — drop your details and we\'ll set up your free session.';
+        }
+      });
     });
   })();
 
@@ -174,18 +184,27 @@
   /* ---------- Contact form (validation + real submit) ---------- */
   var form = document.getElementById('trialForm');
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (form) {
+  if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var email = document.getElementById('trialEmail');
-      var btn = document.getElementById('trialBtn');
-      var note = document.getElementById('formNote');
-      var val = email.value.trim();
+      var nameEl  = document.getElementById('trialName');
+      var email   = document.getElementById('trialEmail');
+      var btn     = document.getElementById('trialBtn');
+      var note    = document.getElementById('formNote');
 
-      note.classList.remove('error', 'done');
+      note.classList.remove('error','done');
+      if(nameEl) nameEl.classList.remove('invalid');
       email.classList.remove('invalid');
 
-      if(!EMAIL_RE.test(val)){
+      if(nameEl && !nameEl.value.trim()){
+        nameEl.classList.add('invalid');
+        note.textContent = 'Please enter your name.';
+        note.classList.add('error');
+        nameEl.focus();
+        return;
+      }
+
+      if(!EMAIL_RE.test(email.value.trim())){
         email.classList.add('invalid');
         note.textContent = 'Please enter a valid email address.';
         note.classList.add('error');
@@ -196,6 +215,7 @@
       var action = form.getAttribute('action') || '';
       var configured = action && action.indexOf('your-form-id') === -1;
 
+      if(nameEl) nameEl.disabled = true;
       email.disabled = true;
       btn.disabled = true;
       btn.textContent = 'Sending…';
@@ -206,6 +226,7 @@
         note.classList.add('done');
       }
       function failure(){
+        if(nameEl) nameEl.disabled = false;
         email.disabled = false;
         btn.disabled = false;
         btn.textContent = 'Claim your trial';
@@ -213,17 +234,43 @@
         note.classList.add('error');
       }
 
-      // Endpoint not wired up yet → demo mode (simulate success).
       if(!configured){ setTimeout(success, 600); return; }
 
       fetch(action, {
-        method: 'POST',
-        headers: {'Accept': 'application/json'},
-        body: new FormData(form)
-      }).then(function(r){ r.ok ? success() : failure(); })
-        .catch(failure);
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:new FormData(form)
+      }).then(function(r){ r.ok ? success() : failure(); }).catch(failure);
     });
   }
+
+  /* ---------- Back to top ---------- */
+  (function(){
+    var btt = document.getElementById('backToTop');
+    if(!btt) return;
+    window.addEventListener('scroll', function(){
+      btt.classList.toggle('visible', window.scrollY > 600);
+    }, {passive:true});
+    btt.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior: reduced ? 'instant' : 'smooth'});
+    });
+  })();
+
+  /* ---------- Cookie consent ---------- */
+  (function(){
+    var bar = document.getElementById('cookieBar');
+    var acceptBtn = document.getElementById('cookieAccept');
+    if(!bar || !acceptBtn) return;
+    try {
+      if(!localStorage.getItem('ironforge_cookie_ok')){
+        setTimeout(function(){ bar.classList.add('visible'); }, 1800);
+      }
+    } catch(e){}
+    acceptBtn.addEventListener('click', function(){
+      try { localStorage.setItem('ironforge_cookie_ok','1'); } catch(e){}
+      bar.classList.remove('visible');
+    });
+  })();
 
   /* ---------- Boot ---------- */
   setupTilt();
@@ -236,25 +283,23 @@
 
   setupObserver();
 
-  // Run the loader, then reveal page + fire hero sequence
   window.addEventListener('load', function(){
     var loader = document.getElementById('loader');
-    if (!loader) {
-      document.body.classList.add('loaded', 'hero-in');
+    if(!loader){
+      document.body.classList.add('loaded','hero-in');
       return;
     }
     setTimeout(function(){
       loader.classList.add('gone');
       document.body.classList.add('loaded');
-      // fire hero entrance once page is visible
       setTimeout(function(){ document.body.classList.add('hero-in'); }, 100);
     }, 850);
   });
-  // Fallback if 'load' already fired or is slow
+
   setTimeout(function(){
     if(!document.body.classList.contains('loaded')){
       var loader = document.getElementById('loader');
-      if (loader) loader.classList.add('gone');
+      if(loader) loader.classList.add('gone');
       document.body.classList.add('loaded');
       setTimeout(function(){ document.body.classList.add('hero-in'); }, 100);
     }

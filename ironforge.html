@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
 <title>IRONFORGE — Karachi's Premier Training Facility</title>
-<meta name="description" content="IRONFORGE — train hard, break limits. Karachi's premier strength and performance training facility.">
+<meta name="description" content="IRONFORGE — train hard, break limits. Karachi's premier strength and performance training facility in DHA Phase VI.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="canonical" href="https://ironforge.pk/">
 
@@ -23,13 +24,59 @@
 <meta name="twitter:description" content="Karachi's premier strength and performance training facility.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80">
 
+<!-- Preload hero image so it renders before CSS fires -->
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" fetchpriority="high">
+
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="forge.css?v=2">
+<link rel="stylesheet" href="forge.css?v=3">
+
+<!-- Structured data — Local Business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthClub",
+  "name": "IRONFORGE",
+  "description": "Karachi's premier strength and performance training facility.",
+  "url": "https://ironforge.pk/",
+  "telephone": "+922135001234",
+  "email": "hello@ironforge.pk",
+  "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Khayaban-e-Ittehad",
+    "addressLocality": "DHA Phase VI",
+    "addressRegion": "Karachi",
+    "addressCountry": "PK"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.8054,
+    "longitude": 67.0688
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "06:00",
+    "closes": "23:00"
+  }],
+  "priceRange": "Rs 4,500 – Rs 15,000",
+  "sameAs": []
+}
+</script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R44Y9C6731"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());
+  gtag('config','G-R44Y9C6731');
+</script>
 </head>
 <body>
 
@@ -67,6 +114,15 @@
   <a href="pricing.html#signup" class="m-join">Join now</a>
 </div>
 
+<!-- ===================== WHATSAPP FLOAT ===================== -->
+<a href="https://wa.me/922135001234?text=Hi%20IRONFORGE!%20I%27d%20like%20to%20book%20a%20free%20trial."
+   class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+   aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
 <div class="page">
 
 <!-- ===================== HERO ===================== -->
@@ -88,13 +144,15 @@
       <p class="hero-sub">No gimmicks, no shortcuts. Serious coaching, brutal programming, and a room full of people chasing the same standard you are.</p>
       <div class="hero-ctas">
         <a href="pricing.html#signup" class="btn btn-primary">Start your trial</a>
-        <a href="classes.html" class="ghost-link"><span class="arr">▶</span> See our programs</a>
+        <a href="classes.html" class="ghost-link"><span class="arr">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+        </span> See our programs</a>
       </div>
       <div class="stats" id="stats">
         <div class="stat"><div class="num" data-count="2400" data-suffix="+">0</div><div class="lbl">Members</div></div>
         <div class="stat"><div class="num" data-count="18">0</div><div class="lbl">Trainers</div></div>
         <div class="stat"><div class="num" data-text="6AM–11PM">6AM–11PM</div><div class="lbl">Open daily</div></div>
-        <div class="stat"><div class="num" data-count="12" data-suffix="yrs">0</div><div class="lbl">Established</div></div>
+        <div class="stat"><div class="num" data-count="12" data-suffix=" yrs">0</div><div class="lbl">Experience</div></div>
       </div>
     </div>
   </div>
@@ -122,6 +180,7 @@
         <h3>Powerlifting</h3>
         <p>Squat, bench, deadlift. Pure strength methodology.</p>
         <div class="meta">Strength · All levels</div>
+        <a href="classes.html" class="class-link">Book class <span aria-hidden="true">→</span></a>
       </div>
       <div class="class-card reveal tilt" style="--d:80ms">
         <div class="class-card-top">
@@ -131,6 +190,7 @@
         <h3>Combat HIIT</h3>
         <p>Boxing drills fused with high-intensity intervals.</p>
         <div class="meta">Cardio · Intermediate</div>
+        <a href="classes.html" class="class-link">Book class <span aria-hidden="true">→</span></a>
       </div>
       <div class="class-card reveal tilt" style="--d:160ms">
         <div class="class-card-top">
@@ -140,6 +200,7 @@
         <h3>Athletic Performance</h3>
         <p>Speed, agility, explosiveness for competing athletes.</p>
         <div class="meta">Performance · Advanced</div>
+        <a href="classes.html" class="class-link">Book class <span aria-hidden="true">→</span></a>
       </div>
       <div class="class-card reveal tilt" style="--d:240ms">
         <div class="class-card-top">
@@ -149,6 +210,7 @@
         <h3>Metabolic Forge</h3>
         <p>Full-body circuits, maximum work, minimum rest.</p>
         <div class="meta">Conditioning · Advanced</div>
+        <a href="classes.html" class="class-link">Book class <span aria-hidden="true">→</span></a>
       </div>
       <div class="class-card reveal tilt" style="--d:320ms">
         <div class="class-card-top">
@@ -158,6 +220,7 @@
         <h3>Mobility &amp; Recovery</h3>
         <p>Joint health, flexibility, CNS reset.</p>
         <div class="meta">Recovery · All levels</div>
+        <a href="classes.html" class="class-link">Book class <span aria-hidden="true">→</span></a>
       </div>
       <div class="class-card reveal tilt" style="--d:400ms">
         <div class="class-card-top">
@@ -167,6 +230,7 @@
         <h3>1-on-1 Coaching</h3>
         <p>Custom programming, real-time feedback.</p>
         <div class="meta">Personal · Custom</div>
+        <a href="classes.html" class="class-link">Book class <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -240,7 +304,7 @@
           <li class="no"><svg class="cross-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Personal training</li>
           <li class="no"><svg class="cross-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Nutrition consult</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost plan-btn">Choose Grind</a>
+        <a href="#contact" class="btn btn-ghost plan-btn" data-plan="Grind">Choose Grind</a>
       </div>
       <div class="price-card featured reveal tilt" style="--d:120ms">
         <div class="badge">Most popular</div>
@@ -253,7 +317,7 @@
           <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 PT sessions / mo</li>
           <li class="no"><svg class="cross-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Nutrition consult</li>
         </ul>
-        <a href="#contact" class="btn btn-primary plan-btn">Choose Forge</a>
+        <a href="#contact" class="btn btn-primary plan-btn" data-plan="Forge">Choose Forge</a>
       </div>
       <div class="price-card reveal tilt" style="--d:240ms">
         <div class="tier">Elite</div>
@@ -265,7 +329,7 @@
           <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>8 PT sessions / mo</li>
           <li><svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Nutrition consult</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost plan-btn">Choose Elite</a>
+        <a href="#contact" class="btn btn-ghost plan-btn" data-plan="Elite">Choose Elite</a>
       </div>
     </div>
   </div>
@@ -293,7 +357,7 @@
           <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
-        <p class="quote"><span class="qmark">“</span><span>Hit a 140kg deadlift in 4 months with Kamran. The programming is no-nonsense and it just works.</span></p>
+        <p class="quote"><span class="qmark">"</span><span>Hit a 140kg deadlift in 4 months with Kamran. The programming is no-nonsense and it just works.</span></p>
         <div class="author">
           <div class="ava">FA</div>
           <div><div class="nm">Faisal Ahmed</div><div class="det">Forge member · 8 months</div></div>
@@ -307,7 +371,7 @@
           <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
-        <p class="quote"><span class="qmark">“</span><span>First time training seriously and I'm hooked. Combat HIIT with Sara is the highlight of my week.</span></p>
+        <p class="quote"><span class="qmark">"</span><span>First time training seriously and I'm hooked. Combat HIIT with Sara is the highlight of my week.</span></p>
         <div class="author">
           <div class="ava">HS</div>
           <div><div class="nm">Hina Siddiqui</div><div class="det">Grind member · 5 months</div></div>
@@ -321,7 +385,7 @@
           <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
-        <p class="quote"><span class="qmark">“</span><span>Came back after a knee injury terrified of lifting again. Zain's mobility sessions were the key to everything.</span></p>
+        <p class="quote"><span class="qmark">"</span><span>Came back after a knee injury terrified of lifting again. Zain's mobility sessions were the key to everything.</span></p>
         <div class="author">
           <div class="ava">OM</div>
           <div><div class="nm">Omar Malik</div><div class="det">Elite member · 11 months</div></div>
@@ -369,6 +433,74 @@
   </div>
 </section>
 
+<!-- ===================== LOCATION ===================== -->
+<section id="location">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Find us</div>
+      <h2 class="sec-title split head">
+        <span class="line">
+          <span class="word" style="--i:0">Where</span>
+          <span class="word" style="--i:1">we</span>
+          <span class="word" style="--i:2">are</span>
+        </span>
+      </h2>
+    </div>
+    <div class="location-inner reveal">
+      <div class="location-info">
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Address</div>
+            <div class="loc-val">Khayaban-e-Ittehad<br>DHA Phase VI, Karachi</div>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Hours</div>
+            <div class="loc-val">Open daily · 6 AM – 11 PM<br>Including weekends &amp; public holidays</div>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Phone</div>
+            <div class="loc-val"><a href="tel:+922135001234">+92 21 3500 1234</a></div>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Email</div>
+            <div class="loc-val"><a href="mailto:hello@ironforge.pk">hello@ironforge.pk</a></div>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=DHA+Phase+VI,Karachi+Pakistan"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-ghost directions-btn">Get directions →</a>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=DHA+Phase+VI,+Karachi,+Pakistan&output=embed&z=14"
+          loading="lazy"
+          allowfullscreen
+          title="IRONFORGE location — DHA Phase VI, Karachi"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CONTACT ===================== -->
 <section id="contact">
   <div class="wrap">
@@ -382,13 +514,22 @@
           <span class="word" style="--i:3">trial</span>
         </span>
       </h2>
-      <p class="contact-sub reveal-up" style="--d:120ms">One free session, full access, zero commitment. Drop your email and we'll set you up.</p>
+      <p class="contact-sub reveal-up" style="--d:120ms">One free session, full access, zero commitment. Drop your details and we'll set you up.</p>
       <form class="contact-form reveal" id="trialForm" style="--d:200ms"
-            action="https://formspree.io/f/your-form-id" method="POST" novalidate>
-        <label for="trialEmail" class="sr-only">Email address</label>
-        <input type="email" id="trialEmail" name="email" placeholder="you@email.com"
-               autocomplete="email" required aria-describedby="formNote">
-        <button type="submit" class="btn btn-primary" id="trialBtn">Claim your trial</button>
+            action="https://formspree.io/f/xeeblgwz" method="POST" novalidate>
+        <input type="hidden" name="plan" id="trialPlan" value="">
+        <div class="form-row">
+          <label for="trialName" class="sr-only">Full name</label>
+          <input type="text" id="trialName" name="name" placeholder="Your name" autocomplete="name" required>
+          <label for="trialPhone" class="sr-only">Phone number</label>
+          <input type="tel" id="trialPhone" name="phone" placeholder="Phone number" autocomplete="tel">
+        </div>
+        <div class="form-row form-row-submit">
+          <label for="trialEmail" class="sr-only">Email address</label>
+          <input type="email" id="trialEmail" name="email" placeholder="you@email.com"
+                 autocomplete="email" required aria-describedby="formNote">
+          <button type="submit" class="btn btn-primary" id="trialBtn">Claim your trial</button>
+        </div>
       </form>
       <p class="form-note reveal-up" id="formNote" style="--d:260ms">No card required. We'll never spam you.</p>
     </div>
@@ -402,10 +543,10 @@
       <a href="#hero" class="brand">IRON<span class="fg">FORGE</span></a>
       <p class="footer-blurb">Karachi's premier strength &amp; performance training facility. Train hard. Break limits.</p>
       <div class="socials">
-        <a href="#" aria-label="IRONFORGE on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7C3.96 8.94 3.96 9.3 3.96 12s0 3.06.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.07 1.59.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.07-1.24.07-1.59.07-4.74s0-3.06-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 00-.68-1.06 2.85 2.85 0 00-1.06-.68c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1112 17a4.94 4.94 0 010-9.88zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm6.28-.36a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
-        <a href="#" aria-label="IRONFORGE on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
-        <a href="#" aria-label="IRONFORGE on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg></a>
-        <a href="#" aria-label="IRONFORGE on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.6 15.6V8.4l6.27 3.6L9.6 15.6z"/></svg></a>
+        <a href="https://www.instagram.com/its.aboodi19/" target="_blank" rel="noopener noreferrer" aria-label="IRONFORGE on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7C3.96 8.94 3.96 9.3 3.96 12s0 3.06.07 4.74c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.07 1.59.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.07-1.24.07-1.59.07-4.74s0-3.06-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 00-.68-1.06 2.85 2.85 0 00-1.06-.68c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1112 17a4.94 4.94 0 010-9.88zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm6.28-.36a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+        <a href="https://www.facebook.com/abdullah.haleem.530" target="_blank" rel="noopener noreferrer" aria-label="IRONFORGE on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+        <a href="https://x.com/MeetAboodi" target="_blank" rel="noopener noreferrer" aria-label="IRONFORGE on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z"/></svg></a>
+        <a href="https://www.youtube.com/@abdullahhaleem7518" target="_blank" rel="noopener noreferrer" aria-label="IRONFORGE on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.6 15.6V8.4l6.27 3.6L9.6 15.6z"/></svg></a>
       </div>
     </div>
     <div class="footer-col">
@@ -417,6 +558,7 @@
       <h4>Get in touch</h4>
       <a href="tel:+922135001234">+92 21 3500 1234</a>
       <a href="mailto:hello@ironforge.pk">hello@ironforge.pk</a>
+      <a href="https://wa.me/922135001234" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
       <a href="pricing.html#signup">Claim free trial</a>
     </div>
   </div>
@@ -425,9 +567,20 @@
   </div>
 </footer>
 
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 </div><!-- /.page -->
 
+<!-- Cookie consent bar -->
+<div id="cookieBar" class="cookie-bar" role="alert">
+  <p>We use cookies to improve your experience and analyse site traffic. By continuing, you accept our use of cookies.</p>
+  <button class="btn btn-primary cookie-accept" id="cookieAccept">Accept</button>
+</div>
+
 <!-- Behavior -->
-<script src="forge.js?v=2" defer></script>
+<script src="forge.js?v=3" defer></script>
 </body>
 </html>
