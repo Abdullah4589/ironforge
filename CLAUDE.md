@@ -1,99 +1,78 @@
-# IRONFORGE — Project Notes
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## What this is
-A single-page marketing website for **IRONFORGE**, a fictional strength &
-performance training gym in Karachi, Pakistan. Tagline: *"Train hard. Break
-limits."*
-
-## Structure
-The site is split across three files (no build step, no dependencies, no
-framework — just open the HTML in a browser):
-- **`ironforge.html`** — markup only. Links the stylesheet in `<head>` and
-  loads the script with `<script src="forge.js" defer>` before `</body>`.
-- **`forge.css`** — all styles (design tokens, layout, animations,
-  responsive, reduced-motion). Was previously an inline `<style>` block.
-- **`forge.js`** — all behavior, wrapped in one IIFE. Was previously an
-  inline `<script>` block.
-
-Naming note: the user explicitly asked NOT to use generic names like
-`style.css` — hence the project-themed `forge.css` / `forge.js`.
-
-External resources: Google Fonts (`Barlow Condensed`, `Inter`) and Unsplash
-images (see "Assets" below).
-
-## Sections (top to bottom)
-1. **Loader** — letter-by-letter animated "IRONFORGE" intro that slides away.
-2. **Nav** — fixed top bar; drops in on load, gains a blurred background once
-   scrolled past 80px. Links: Classes, Trainers, Pricing, Results, FAQ, Join
-   now. Active link highlights via scroll-spy. Below 860px it collapses to a
-   hamburger that opens a full-screen mobile menu.
-3. **Hero** — gym background photo with a dark left-to-right gradient overlay,
-   animated split-word headline, sub-copy, two CTAs, and a row of animated
-   count-up stats (2,400+ members, 18 trainers, hours, 12 yrs).
-4. **Classes** — 6 program cards (Powerlifting, Combat HIIT, Athletic
-   Performance, Metabolic Forge, Mobility & Recovery, 1-on-1 Coaching).
-5. **Trainers** — 4 coach cards with grayscale portrait photos (color on
-   hover); falls back to initials if an image fails to load.
-6. **Pricing** — 3 tiers: Grind (Rs 4,500/mo), Forge (Rs 8,500/mo, "Most
-   popular"), Elite (Rs 15,000/mo).
-7. **Testimonials** — 3 member reviews with 5-star ratings.
-8. **FAQ** — 5-item accordion (hours, free trial, cancellation, beginners,
-   location/parking).
-9. **Contact** — free-trial email capture form with validation.
-10. **Footer** — 3-column (brand+socials, visit/hours, contact) + copyright bar.
-
-## Design system (CSS custom properties in `:root`)
-- Dark theme: near-black backgrounds (`--bg:#0A0A0A`), white text,
-  single orange accent (`--accent:#E84C1E`).
-- Shared easing curve `--ease:cubic-bezier(0.16,1,0.3,1)`, max content
-  width `--maxw:1180px`.
-- Condensed uppercase display type for headings; Inter for body.
-
-## Interactions / JS behavior
-- **Scroll reveals** via `IntersectionObserver` (`.reveal`, `.reveal-up`,
-  `.reveal-left`, split-word headings).
-- **Scroll-spy** — highlights the current section's nav link.
-- **Count-up stat animation** when the hero stats scroll into view.
-- **Cursor spotlight** — radial glow follows the mouse (disabled on touch).
-- **Magnetic tilt** — cards rotate slightly toward the cursor (disabled on
-  touch / reduced motion).
-- **Mobile menu** — hamburger toggles a full-screen overlay; closes on link
-  click or Escape, and locks body scroll while open.
-- **FAQ accordion** — click to expand/collapse, animated max-height, with
-  `aria-expanded` toggling.
-- **Contact form** — validates email format (inline error state), then
-  submits. See "form wiring" below.
-- **Loader sequence** — runs on `load`, then reveals page + fires hero
-  entrance; fallback timer so the page never stays hidden.
-- **Reduced motion** — `prefers-reduced-motion` fully supported.
-- **Responsive** — 860px (nav → hamburger, footer → 2-col) and 640px (stats
-  2-col, contact form stacks, footer 1-col).
-
-## Form wiring (IMPORTANT)
-The contact form posts to a **Formspree** endpoint set in the form's `action`
-attribute (`https://formspree.io/f/your-form-id`). Until that placeholder is
-replaced with a real Formspree form ID, the JS runs in **demo mode** — it
-validates the email and simulates a success message without sending anything.
-To go live: create a Formspree (or similar) form and swap `your-form-id` for
-the real ID. Real submits use `fetch` + `FormData` and show an error state on
-failure.
-
-## Assets / external dependencies
-- Google Fonts (Barlow Condensed, Inter).
-- **Unsplash** images for the hero background and the 4 trainer portraits
-  (hot-linked URLs). Trainer `<img>`s have `onerror="this.remove()"` so the
-  initials fallback shows if a URL ever breaks. For production, download and
-  self-host these (and replace trainers with real coach photos).
-- Favicon is an inline SVG data-URI (no file needed).
-
-## Known limitations / not yet done
-- **Form endpoint not configured** — demo mode until a Formspree ID is set
-  (see "Form wiring" above).
-- **Trainer photos are stock** — generic Unsplash portraits, not real coaches.
-- **Content is sample/placeholder** — names, testimonials, stats, address,
-  phone are filler.
-- **Social links** in the footer point to `#` (no real profiles yet).
-- **No real OG share image hosted** — currently points at the Unsplash hero.
+A multi-page marketing website for **IRONFORGE**, a strength & performance training gym in Karachi, Pakistan. No build step, no dependencies, no framework — open `ironforge.html` directly in any browser.
 
 ## How to run
-Open `ironforge.html` directly in any modern browser. No server required.
+Open `ironforge.html` in any modern browser. No server, no install, no CLI needed.
+
+## File structure
+| File | Purpose |
+|---|---|
+| `ironforge.html` | Main landing page — all sections live here |
+| `forge.css` | All styles — tokens, layout, animations, responsive, reduced-motion |
+| `forge.js` | All behavior — one IIFE, no modules |
+| `classes.html` / `trainers.html` / `pricing.html` / `about.html` | Subpages linked from nav |
+
+**Naming rule:** never rename `forge.css` / `forge.js` to generic names — project-themed names are intentional.
+
+Cache-busting is manual: bump `?v=N` on the `<link>` and `<script>` tags in every HTML file when either asset changes.
+
+## Architecture
+
+### CSS (`forge.css`)
+All design tokens live in `:root`. The dark theme is defined by a small set of variables — touch only these when changing the palette:
+- `--bg` / `--bg-2` / `--card` / `--card-2` — background layers (darkest → slightly lighter)
+- `--accent: #E84C1E` — the single orange accent; used for CTAs, highlights, icons
+- `--border: #2A2A2A` — subtle dividers
+- `--ease: cubic-bezier(0.16,1,0.3,1)` — shared spring easing
+
+Section backgrounds alternate in this order to create seamless gradient blends between them: `--bg` → `--bg-2` → `--bg` → `--card` → `--bg-2` → `--bg` → `--bg`. Each section uses a `::before` pseudo-element that gradients FROM the previous section's background color; keep these in sync when reordering sections.
+
+Reveal animations use three CSS classes (`.reveal`, `.reveal-up`, `.reveal-left`) that start hidden and animate to visible when `.is-visible` is added. The `--d` custom property on each element sets its stagger delay.
+
+### JS (`forge.js`)
+Single IIFE. Key behaviors and where to find them:
+
+| Behavior | Location |
+|---|---|
+| Loader letter build + animation | top of IIFE |
+| Stat count-up animation | `animateCounter()` / `runCounters()` |
+| Scroll reveals | `setupObserver()` — `IntersectionObserver` adds `.is-visible` |
+| Cursor spotlight | `mousemove` on `document`, sets CSS vars `--x` / `--y` on `#spotlight` |
+| Card magnetic tilt | `setupTilt()` — inline style on `mousemove`, reset on `mouseleave` |
+| Mobile hamburger menu | `navToggle` / `mobileMenu` — toggles `.open`, locks `body.overflow` |
+| Nav active page highlight | `highlightNav()` — matches `location.pathname` filename to `href` |
+| Plan → form pre-fill | `[data-plan]` click handler — sets hidden `#trialPlan` input + updates `.contact-sub` text |
+| FAQ accordion | `.faq-q` click — toggles `.open`, animates `max-height` via `scrollHeight` |
+| Contact form submit | validates name + email, posts to Formspree via `fetch` + `FormData` |
+| Back-to-top button | `#backToTop` — visible after 600px scroll |
+| Cookie consent | `#cookieBar` — shown after 1.8s if `localStorage` key absent |
+
+Two guard variables at the top of the IIFE control conditional behavior:
+- `reduced` — `prefers-reduced-motion`: skips all animations, shows everything immediately
+- `noHover` — touch devices: disables spotlight and tilt
+
+### Page sections (ironforge.html, top → bottom)
+Loader → Nav → WhatsApp float → Hero → Classes → Trainers → Pricing → Testimonials → FAQ → Location → Contact → Footer → Back-to-top → Cookie bar
+
+## Integrations (live / configured)
+- **Formspree** `https://formspree.io/f/xeeblgwz` — contact form endpoint. Form collects `name`, `phone`, `email`, and hidden `plan` field. JS detects `your-form-id` in the action to determine demo vs. live mode.
+- **Google Analytics** `G-R44Y9C6731` — already uncommented and active in `<head>`.
+- **WhatsApp** `https://wa.me/922135001234` — floating button and footer link.
+- **Social links** — Instagram, Facebook, X, YouTube all wired to real profiles in the footer.
+
+## Design rules (do not break these)
+- Dark theme only — do not introduce light backgrounds or white cards.
+- `--accent` (#E84C1E) is the only color accent. Do not add a second accent color.
+- Headings use `Barlow Condensed` (900 weight, uppercase). Body uses `Inter`.
+- All new cards should follow the existing pattern: dark gradient background, `1px solid rgba(255,255,255,0.04)` border, `border-radius:12px`, orange border + glow on hover.
+- Featured pricing card has a `featuredGlow` CSS animation — preserve this when editing the pricing section.
+- Tilt effect (`setupTilt()`) must preserve `scale(1.03)` for `.featured` cards — see the `isFeatured` check in the JS.
+
+## Known remaining placeholders
+- Trainer photos are stock Unsplash portraits — replace with real coach photos for production.
+- OG share image (`og:image`) still points at Unsplash — self-host a real 1200×630 image.
+- Social profiles in footer point to the owner's personal accounts, not dedicated IRONFORGE brand accounts.
